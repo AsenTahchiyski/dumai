@@ -1,0 +1,29 @@
+body {
+	background-color: black;
+	width: 100vw;
+	height: 100vh;
+	margin: auto;
+	text-align: center;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	section {
+		span {
+			color: gray;
+			font-size: 2em;
+		}
+		button, select {
+			margin-top: 1em;
+			background-color: orange;
+			color: fff;
+			border: 0;
+			border-radius: 5px;
+			padding: 5px;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			font-weight: bold;
+		}
+		.dropdown-content {
+			min-width: 300px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+		}
+	}
+}
