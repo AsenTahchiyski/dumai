@@ -54,7 +54,7 @@
 	}
 
 	function populateVoiceList() {
-		if (typeof speechSynthesis === 'undefined') {
+		if (typeof speechSynthesis === 'undefined' || this.voices) {
 			return;
 		}
 
@@ -76,10 +76,15 @@
 		const textArea = document.querySelector('textarea');
 		textArea.textContent = 'Speech synthesis has come a long way since it’s first appearance in operating systems in the 1980s. In the 1990s Apple already offered system-wide text-to-speech support. Alexa, Cortana, Siri and other virtual assistants recently brought speech synthesis to the masses. In modern browsers the Web Speech API allows you to gain access to your device’s speech capabilities, so let’s start using it!'
 
-		const button = document.querySelector('button#ne-dumai');
-		button.addEventListener('click', () => {
+		const speakBtn = document.querySelector('button#dumai');
+		speakBtn.addEventListener('click', () => {
 			const text = document.querySelector('textarea').value;
 			speak(text);
+		});
+
+		const shutUpBtn = document.querySelector('button#shut-up');
+		shutUpBtn.addEventListener('click', () => {
+			speechSynthesis.cancel();
 		});
 
 		const select = document.querySelector('select.dropdown-content');
