@@ -2,7 +2,7 @@
 	this.synth;
 	this.voice;
 	this.attempts = 0;
-	this.defaultLang = 'en-GB';
+	this.defaultLang = 'en-US';
 	this.chunkLength = 160;
 
 	if ('speechSynthesis' in window) {
@@ -54,22 +54,15 @@
 	}
 
 	function populateVoiceList() {
-		if (typeof speechSynthesis === 'undefined' || this.voices) {
-			return;
-		}
+		if (typeof speechSynthesis === 'undefined' || this.voices) return;
 
-		voices = speechSynthesis.getVoices();
-		this.voices = voices;
-		for (i = 0; i < voices.length; i++) {
+		this.voices = speechSynthesis.getVoices();
+		const select = document.querySelector('select.dropdown-content');
+		this.voices.forEach(voice => {
 			var option = document.createElement('option');
-			option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
-
-			if (voices[i].lang === this.defaultLang) {
-				option.textContent += ' -- DEFAULT';
-			}
-
-			document.querySelector('select.dropdown-content').appendChild(option);
-		}
+			option.textContent = `${voice.name} (${voice.lang})`;
+			select.appendChild(option);
+		});
 	}
 
 	document.addEventListener('DOMContentLoaded', () => {
